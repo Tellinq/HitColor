@@ -1,6 +1,8 @@
 # HitColor
 A mod for [OneConfig](https://github.com/Polyfrost/OneConfig) you to customize the hit color to your liking.
 
+(Screenshot will be added when the mod is complete.)
+
 ## Features
 
 - An option to toggle Armor being affected.
