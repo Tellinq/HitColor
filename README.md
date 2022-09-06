@@ -1,5 +1,5 @@
 # HitColor
-A mod for [OneConfig](https://github.com/Polyfrost/OneConfig) you to customize the hit color to your liking.
+A mod for [OneConfig](https://github.com/Polyfrost/OneConfig) you to customize the hit color of any living entity to your liking.
 
 (Screenshot will be added when the mod is complete.)
 
