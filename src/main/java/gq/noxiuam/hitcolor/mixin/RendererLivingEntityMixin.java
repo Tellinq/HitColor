@@ -1,5 +1,6 @@
 package gq.noxiuam.hitcolor.mixin;
 
+import cc.polyfrost.oneconfig.config.core.OneColor;
 import gq.noxiuam.hitcolor.HitColor;
 import gq.noxiuam.hitcolor.config.HitColorConfig;
 import net.minecraft.client.renderer.GlStateManager;
@@ -68,26 +69,35 @@ public abstract class RendererLivingEntityMixin {
             this.brightnessBuffer.position(0);
 
             float brightness = 1.0F;
-            HitColorConfig hitColor = HitColor.INSTANCE.config;
+            HitColorConfig config = HitColor.INSTANCE.config;
+
+            HitColorConfig.HitColorConfiguration e = config.getEntityType(entitylivingbaseIn);
+
+            int animationTypeToUse = config.getAnimationTypeToUse(e);
+            boolean affectedByBrightnessToUse = config.getBrightnessToUse(e);
+            OneColor hitColorToUse = config.getColorToUse(e);
+
+            if (e == null)
+                return;
 
             if (flag1) {
-                if (hitColor.enabled) {
-                    f = hitColor.affectedByBrightness ? f : 1.0F;
-                    float hitA = hitColor.hitColor.getAlpha() / 255F;
-                    if (hitColor.animationType != 0) {
+                if (config.enabled) {
+                    f = affectedByBrightnessToUse ? f : 1.0F;
+                    float hitA = hitColorToUse.getAlpha() / 255F;
+                    if (animationTypeToUse != 0) {
                         float percent = 1.0F - (float)entitylivingbaseIn.hurtTime / 10.0F;
-                        if (hitColor.animationType == 1) {
+                        if (animationTypeToUse == 1) {
                             percent = percent < 0.5F ? percent / 0.5F : (1.0F - percent) / 0.5F;
-                        } else if (hitColor.animationType == 2) {
+                        } else if (animationTypeToUse == 2) {
                             percent = (1.0F - percent);
                         }
 
                         hitA = hitA * percent;
                     }
 
-                    this.brightnessBuffer.put((hitColor.hitColor.getRed() / 255F) * brightness * f);
-                    this.brightnessBuffer.put((hitColor.hitColor.getGreen() / 255F) * brightness * f);
-                    this.brightnessBuffer.put((hitColor.hitColor.getBlue() / 255F) * brightness * f);
+                    this.brightnessBuffer.put((hitColorToUse.getRed() / 255F) * brightness * f);
+                    this.brightnessBuffer.put((hitColorToUse.getGreen() / 255F) * brightness * f);
+                    this.brightnessBuffer.put((hitColorToUse.getBlue() / 255F) * brightness * f);
                     this.brightnessBuffer.put(hitA);
                 } else {
                     this.brightnessBuffer.put(brightness);
