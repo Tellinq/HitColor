@@ -9,8 +9,8 @@ A mod for [OneConfig](https://github.com/Polyfrost/OneConfig) you to customize t
 
 - An option to make all individual options be controlled by "Option Behavior":
     - Individual (Default): Edit each entity hit color individually.
-    - Global: Allows you to edit each entity hit color with the global settings.
-    - Both: Same thing as Global, but when an individual option is changed, it overrides the global setting automatically.
+    - Global: Allows you to edit each entity hit color with the global settings category.
+    - Both: Same thing as Global, but when an individual option is changed, that option overrides the global option automatically.
 
 
 - An option to edit each entity hit color individually and globally:
@@ -23,6 +23,9 @@ A mod for [OneConfig](https://github.com/Polyfrost/OneConfig) you to customize t
 - Whether they are passive or not.
 - How rare they are to find.
 
+![](https://i.imgur.com/hAkdtJX.png)
+
+![](https://i.imgur.com/rq8sQq7.png)
 
 ## Credits
 This mod was ported from [CheatBreaker 2](https://cheatbreaker2.com), meaning the credits that can be found in the client to the original creators of certain features still apply here.
