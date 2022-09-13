@@ -28,6 +28,5 @@ A mod for [OneConfig](https://github.com/Polyfrost/OneConfig) that allows you to
 ![](https://i.imgur.com/rq8sQq7.png)
 
 ## Credits
-This mod was ported from [CheatBreaker 2](https://cheatbreaker2.com), meaning the credits that can be found in the client to the original creators of certain features still apply here.
 
 - aycy (Fade animation)
