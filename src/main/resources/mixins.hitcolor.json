@@ -2,7 +2,7 @@
   "compatibilityLevel": "JAVA_8",
   "minVersion": "0.7",
   "package": "gq.noxiuam.hitcolor.mixin",
-  "refmap": "mixins.oneconfig.refmap.json",
+  "refmap": "mixins.hitcolor.refmap.json",
   "verbose": true,
   "client": [
     "LayerArmorBaseMixin",
