@@ -27,6 +27,9 @@ public class HitColorConfig extends Config {
     @Switch(name = "Affected by Brightness", subcategory = "Global Options")
     public boolean affectedByBrightness = true;
 
+    @Switch(name = "Remove Glint on Armor When Damaged", subcategory = "Global Options")
+    public boolean removeGlintOnArmor = true;
+
     @Dropdown(name = "Animation Type", subcategory = "Global Options", options = { "None", "Linear In/Out", "Linear Out" }, size = 2)
     public int animationType = 0;
 
@@ -170,6 +173,21 @@ public class HitColorConfig extends Config {
         return e.affectedByBrightness ? affectedByBrightness : e.affectedByBrightness;
     }
 
+    public boolean getRemoveGlintToUse(HitColorConfiguration e) {
+        // individual only
+        if (globalOverride == 0) {
+            return e.removeGlintOnArmor;
+        }
+
+        // global only
+        if (globalOverride == 1) {
+            return removeGlintOnArmor;
+        }
+
+        // both only, will only be used if an individual page option is changed.
+        return e.removeGlintOnArmor ? removeGlintOnArmor : e.removeGlintOnArmor;
+    }
+
     public OneColor getColorToUse(HitColorConfiguration e) {
         // individual only
         if (globalOverride == 0) {
@@ -278,6 +296,9 @@ public class HitColorConfig extends Config {
 
         @Switch(name = "Affected by Brightness", subcategory = "General Options")
         public boolean affectedByBrightness = true;
+
+        @Switch(name = "Remove Glint on Armor When Damaged", subcategory = "General")
+        public boolean removeGlintOnArmor = true;
 
         @Dropdown(name = "Animation Type", subcategory = "Animation Options", options = {"None", "Linear In/Out", "Linear Out"})
         public int animationType = 0;
