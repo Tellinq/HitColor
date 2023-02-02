@@ -139,6 +139,7 @@ public class HitColorConfig extends Config {
         initialize();
 
         addDependency("affectedByBrightness", () -> globalOverride != 0);
+        addDependency("removeGlintOnArmor", () -> globalOverride != 0);
         addDependency("animationType", () -> globalOverride != 0);
         addDependency("hitColor", () -> globalOverride != 0);
     }
