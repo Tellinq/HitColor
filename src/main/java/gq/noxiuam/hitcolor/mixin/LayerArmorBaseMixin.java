@@ -15,12 +15,25 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(LayerArmorBase.class)
 public class LayerArmorBaseMixin<T extends ModelBase> {
 
+
+    /** Entity living base value received by setBrightness */
+    private EntityLivingBase entitylivingbaseIn;
+
+    /**
+     * Sets {@link #entitylivingbaseIn} so the modified args can use them.
+     */
+    @Inject(method = "doRenderLayer", at = @At("HEAD"))
+    private void setMethodVariables(EntityLivingBase entitylivingbaseIn, float p_177141_2_, float p_177141_3_, float partialTicks, float p_177141_5_, float p_177141_6_, float p_177141_7_, float scale, CallbackInfo ci) {
+        this.entitylivingbaseIn = entitylivingbaseIn;
+    }
+
+
     /**
      * Affects Armor option.
      */
     @Inject(method = "shouldCombineTextures", at = @At(value = "RETURN"), cancellable = true)
     public void injectShouldCombineTextures(CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(HitColor.INSTANCE.config.enabled && HitColor.INSTANCE.config.affectArmor);
+        cir.setReturnValue(HitColor.INSTANCE.config.enabled && HitColor.INSTANCE.config.getAffectArmorToUse(HitColor.INSTANCE.config.getEntityType(this.entitylivingbaseIn)));
     }
 
     @Inject(method = "renderGlint", at = @At(value = "HEAD"), cancellable = true)
